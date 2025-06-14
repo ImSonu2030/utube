@@ -1,7 +1,9 @@
 import React from "react";
+
 import "./Navbar.css";
-import * as assets from "../../assets/assets.jsx";
 import { Link } from "react-router-dom";
+import * as assets from "../../assets/assets.jsx";
+
 export const Navbar = ({ setSidebar }) => {
   return (
     <nav className="flex-div">

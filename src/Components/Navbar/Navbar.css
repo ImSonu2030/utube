@@ -26,6 +26,7 @@ nav {
     border: 0;
     outline: 0;
     background: transparent;
+    transition: 0.3s all;
 }
 .nav-middle .search-box img {
     width: 15px;
@@ -40,8 +41,8 @@ nav {
 }
 
 @media (max-width:900px) {
-    .menu-icon {
-        display: none;
+    .nav-left .menu-icon {
+        margin-right:15px ;
     }
     .nav-right img {
         display: none;
