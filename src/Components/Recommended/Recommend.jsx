@@ -1,11 +1,10 @@
 import { React, useEffect, useState } from "react";
 
 import "./Recommend.css";
-import { API_KEY } from "../../env.js";
-import * as assets from "../../assets/assets.jsx";
-import { convertViewCount } from "../../Data/helper.jsx";
-import { Link } from "react-router-dom";
 import moment from "moment";
+import { API_KEY } from "../../env.js";
+import { Link } from "react-router-dom";
+import { convertViewCount } from "../../Data/helper.jsx";
 
 export const Recommend = ({ categoryId }) => {
   const [data, setData] = useState(null);
@@ -27,8 +26,7 @@ export const Recommend = ({ categoryId }) => {
       {data
         ? data.map((item, indx) => {
             return (
-              <Link key={indx} to={`/video/${item.snippet.categoryId}/${item.id}`}>
-                <div className="side-video-list">
+                <Link key={indx} className="side-video-list" to={`/video/${item.snippet.categoryId}/${item.id}`}>
                   <img
                     src={item.snippet.thumbnails.medium.url}
                     alt={item.snippet.title}
@@ -42,8 +40,7 @@ export const Recommend = ({ categoryId }) => {
                       <p>{moment(item.snippet.publishedAt).fromNow()}</p>
                     </span>
                   </div>
-                </div>
-              </Link>
+                </Link>
             );
           })
         : "Loading..."}

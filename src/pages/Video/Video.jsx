@@ -8,7 +8,7 @@ export const Video = () => {
   const {videoId,categoryId} = useParams();
   return (
     <div className='play-container'>
-      <PlayVideo videoId={videoId}/>
+      <PlayVideo/>
       <Recommend categoryId={categoryId}/>
     </div>
   )

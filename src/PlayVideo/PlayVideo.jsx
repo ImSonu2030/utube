@@ -5,8 +5,10 @@ import { API_KEY } from "../env.js";
 import * as assets from "../assets/assets.jsx";
 import { convertViewCount } from "../Data/helper.jsx";
 import moment from "moment";
+import { useParams } from "react-router-dom";
 
-export const PlayVideo = ({ videoId }) => {
+export const PlayVideo = () => {
+  const {videoId} = useParams();
   const [videoData, setVideoData] = useState(null);
   const [channelData, setChannelData] = useState(null);
   const [commentData, setCommentData] = useState(null);
@@ -44,7 +46,7 @@ export const PlayVideo = ({ videoId }) => {
   useEffect(() => {
     fetchVideoData();
     fetchCommentThreads();
-  }, []);
+  }, [videoId]);
 
   useEffect(() => {
     if (videoData) {
