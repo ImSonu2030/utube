@@ -12,7 +12,7 @@ nav {
     margin-right: 25px;
 }
 .nav-left .logo {
-    width: 130px;
+    width: 35px;
     transition: 0.3s all;
 }
 .nav-middle .search-box {
@@ -52,7 +52,7 @@ nav {
         width: 30px;
     }
     .nav-left .logo {
-        width: 100px;
+        width: 30px;
     }
     .nav-middle .search-box input {
         width: 40vw;
