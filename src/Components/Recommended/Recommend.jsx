@@ -1,159 +1,52 @@
-import React from 'react'
-import './Recommend.css'
-import * as assets from '../../assets/assets.jsx'
+import { React, useEffect, useState } from "react";
 
-export const Recommend = () => {
+import "./Recommend.css";
+import { API_KEY } from "../../env.js";
+import * as assets from "../../assets/assets.jsx";
+import { convertViewCount } from "../../Data/helper.jsx";
+import { Link } from "react-router-dom";
+import moment from "moment";
+
+export const Recommend = ({ categoryId }) => {
+  const [data, setData] = useState(null);
+
+  const fetchData = async () => {
+    const endpointUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${categoryId}&key=${API_KEY}`;
+    const response = await fetch(endpointUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.items);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [categoryId]);
   return (
-    <div className='recommended'>
-        <div className="side-video-list">
-            <img src={assets.thumbnail1} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-        
-        <div className="side-video-list">
-            <img src={assets.thumbnail2} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail3} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail4} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail5} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail6} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail7} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail8} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-
-
-
-
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail1} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-        
-        <div className="side-video-list">
-            <img src={assets.thumbnail2} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail3} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail4} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail5} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail6} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail7} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-
-        <div className="side-video-list">
-            <img src={assets.thumbnail8} alt="" />
-            <div className="video-info">
-                <h4>Best Channel that help yout to be a web developer</h4>
-                <p>GreatStack</p>
-                <p>199k Views</p>
-            </div>
-        </div>
-        
+    <div className="recommended">
+      {data
+        ? data.map((item, indx) => {
+            return (
+              <Link key={indx} to={`/video/${item.snippet.categoryId}/${item.id}`}>
+                <div className="side-video-list">
+                  <img
+                    src={item.snippet.thumbnails.medium.url}
+                    alt={item.snippet.title}
+                  />
+                  <div className="video-info">
+                    <h4>{item.snippet.title}</h4>
+                    <p>{item.snippet.channelTitle}</p>
+                    <span>
+                      <p>{convertViewCount(item.statistics.viewCount)} Views</p>
+                      &bull;
+                      <p>{moment(item.snippet.publishedAt).fromNow()}</p>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })
+        : "Loading..."}
     </div>
-  )
-}
+  );
+};

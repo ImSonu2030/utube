@@ -3,17 +3,28 @@
 }
 .side-video-list {
     display: flex;
-    justify-content: center;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 .side-video-list img {
     flex-basis: 49%;
     width: 50%;
+    border-radius: 5px;
 }
 .video-info {
     flex-basis: 49%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
 }
 .video-info h4 {
     font-size: 13px;
-    margin-bottom: 5px;
+}
+.video-info p {
+    font-size: small;
+}
+.video-info span {
+    display:  flex;
+    column-gap: 5px;
 }

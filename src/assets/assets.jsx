@@ -43,12 +43,13 @@ import tom from './tom.png';
 import upload from './upload.png';
 import userProfile from './user_profile.jpg';
 import voiceSearch from './voice-search.png';
-
+import reply from './replycomment.png'
 // Videos
 import video from './video.mp4';
 
 export {
   automobiles,
+  reply,
   blogs,
   cameron,
   cast,

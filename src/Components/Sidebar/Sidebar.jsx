@@ -2,7 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import * as assets from "../../assets/assets.jsx";
 import { SidebarTab } from "./SidebarTab.jsx";
-import {categoryIDs} from "../../Data/Category.jsx"
+import {categoryIDs} from "../../Data/helper.jsx"
 
 export const Sidebar = ({ sidebar, category, setCategory }) => {
   return (

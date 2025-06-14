@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import * as assets from "../../assets/assets.jsx";
 import { Link } from "react-router-dom";
 import { API_KEY } from "../../env.js";
-import { convertViewCount } from "../../Data/Category.jsx";
+import { convertViewCount } from "../../Data/helper.jsx";
 import moment from "moment";
 
 export const Feed = ({ category }) => {
@@ -27,7 +27,7 @@ export const Feed = ({ category }) => {
       {data.map((item, indx) => {
         return (
           <Link key={indx} to={`video/${item.snippet.categoryId}/${item.id}`} className="card">
-            <img src={item.snippet.thumbnails.default.url} alt="" />
+            <img src={item.snippet.thumbnails.standard.url} alt="" />
             <h2>
               {item.snippet.title}
             </h2>
