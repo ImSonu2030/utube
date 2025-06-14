@@ -10,7 +10,7 @@ export const Recommend = ({ categoryId }) => {
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
-    const endpointUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${categoryId}&key=${API_KEY}`;
+    const endpointUrl = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=25&regionCode=US&videoCategoryId=${categoryId}&key=${API_KEY}`;
     const response = await fetch(endpointUrl)
       .then((response) => response.json())
       .then((data) => {

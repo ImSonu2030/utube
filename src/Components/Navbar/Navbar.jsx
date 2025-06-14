@@ -12,7 +12,7 @@ export const Navbar = ({ setSidebar }) => {
           onClick={() => setSidebar((prev) => (prev === false ? true : false))}
           alt=""
         />
-        <Link to="/"><img className="logo" src={assets.logo} alt="" /></Link>
+        <Link to="/"><img className="logo" src={assets.logo} alt="UTube logo" /></Link>
       </div>
       <div className="nav-middle flex-div">
         <div className="search-box flex-div">

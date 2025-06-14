@@ -28,3 +28,11 @@
     display:  flex;
     column-gap: 5px;
 }
+
+@media (max-width:900px) {
+    .recommended {
+        flex-basis: 100%;
+        border-top: 1px solid #00000055;
+        padding-top: 25px;
+    }
+}

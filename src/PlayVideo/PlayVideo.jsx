@@ -32,7 +32,7 @@ export const PlayVideo = () => {
   };
 
   const fetchCommentThreads = async () => {
-    const url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&order=relevance&videoId=${videoId}&key=${API_KEY}`;
+    const url = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=25&order=relevance&videoId=${videoId}&key=${API_KEY}`;
     await fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -75,25 +75,27 @@ export const PlayVideo = () => {
       {videoData && (
         <>
           <div className="play-video-info">
-            <p>
-              {convertViewCount(videoData.statistics.viewCount)} Views &bull;{" "}
-              {moment(videoData.snippet.publishedAt).fromNow()}
-            </p>
-            <div>
+            <div className="reach-stats">
+              <p>{convertViewCount(videoData.statistics.viewCount)} Views</p>
+              <p>&bull;</p>
+              <p>{moment(videoData.snippet.publishedAt).fromNow()}</p>
+            </div>
+            <div className="impression-stats">
               <span>
                 <img src={assets.like} alt="" />
-                {convertViewCount(videoData.statistics.likeCount)}
+                <p>{convertViewCount(videoData.statistics.likeCount)}</p>
               </span>
               <span>
                 <img src={assets.dislike} alt="" />
+                <p></p>
               </span>
               <span onClick={copyLinktoClipboard}>
                 <img src={assets.share} alt="" />
-                Share
+                <p>Share</p>
               </span>
               <span>
                 <img src={assets.save} alt="" />
-                Save
+                <p>Save</p>
               </span>
             </div>
           </div>

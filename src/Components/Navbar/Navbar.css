@@ -13,6 +13,7 @@ nav {
 }
 .nav-left .logo {
     width: 130px;
+    transition: 0.3s all;
 }
 .nav-middle .search-box {
     border:1px solid #ccc;
@@ -36,4 +37,23 @@ nav {
 .nav-right .user-icon {
     width: 35px;
     border-radius: 50%;
+}
+
+@media (max-width:900px) {
+    .menu-icon {
+        display: none;
+    }
+    .nav-right img {
+        display: none;
+    }
+    .nav-right .user-icon {
+        display: block;
+        width: 30px;
+    }
+    .nav-left .logo {
+        width: 100px;
+    }
+    .nav-middle .search-box input {
+        width: 40vw;
+    }
 }
